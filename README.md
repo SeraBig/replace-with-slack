@@ -15,7 +15,7 @@ python3 slack-replace-install.py
 and then restart your desktop slack client. 
 
 ## Versions of Slack
-This has only been tested against Slack 4.3.3. If the major version is different it may no longer work.
+This has only been tested against Slack 4.4.1. If the major version is different it may no longer work. Previous versions of Slack are tagged to be functional in the repo, including: 4.3.3.
 
 ## Updating Slack
 After slack has updated, re-run the install script.
@@ -28,14 +28,17 @@ export SLACK_DEVELOPER_MENU=true; open -a /Applications/Slack.app
 which allows a "View->Developer Tools" menu that has inspectors and a console.
 
 ## Future development
-Since this was a corporate environment it remained useful to still see the offender's messages. Support for completely blocking messages should be able to be implemented. Other approaches at putting user blocking into slack do similar tricks to identify messages and then updating them like
+* Since this was a corporate environment it remained useful to still see the offender's messages. Support for completely blocking messages should be able to be implemented. Other approaches at putting user blocking into slack do similar tricks to identify messages and then hidem them like
 ```js
     messageElement.classList.add("blocked");
     messageElement.style.display = "none";
 ```
-which hides the message.
 
-To detect messages by particular users, one needs to delay the parsing as at the time of DOM insertion the sender has not been updated. However, after a short delay, using `'data-member-id'` or a class of `c-message__sender_link` may be possible to detect the user ID.
+* To detect messages by particular users, one needs to delay the parsing as at the time of DOM insertion the sender has not been updated. However, after a short delay, using `'data-member-id'` or a class of `c-message__sender_link` may be possible to detect the user ID.
+
+* Needs to be changed to a setup.py structure as a tool.
+
+* Needs linting and testing to support it as future development.
 
 ## Alternatives
 One can get the same effect using the browser client and an extension like [FoxReplace](https://addons.mozilla.org/en-US/firefox/addon/foxreplace/)

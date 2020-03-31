@@ -30,7 +30,7 @@ import tarfile
 import tempfile
 
 
-rws_version = '0.1.0.1000'
+rws_version = '0.1.0.4.41'
 
 
 # Parse command line options
@@ -227,7 +227,10 @@ json_header = json.loads(json_binary[8:(json_string_size + 8)].decode('utf-8'))
 assert 'RWSINJECT' not in json_header['files']
 
 
-injected_file_name = 'main-preload-entry-point.bundle.js'
+# injected_file_name = 'main-preload-entry-point.bundle.js'
+injected_file_name = 'preload.bundle.js'
+print("json_header was")
+print(json_header)
 ori_injected_file_size = json_header['files']['dist']['files'][injected_file_name]['size']
 ori_injected_file_offset = int(json_header['files']['dist']['files'][injected_file_name]['offset'])
 
